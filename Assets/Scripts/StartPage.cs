@@ -38,22 +38,24 @@ public class StartPage : MonoBehaviour {
 
 		if (GUI.Button (NewGameRect, "NEW GAME", (GUIStyle)"Buttons")) 
 		{
-
+            Application.LoadLevel("OptionScene");
 		}
+
+
 
 		if (GUI.Button (DemoRect, "INSTRUCTIONS", (GUIStyle)"Buttons")) 
 		{
-			Application.LoadLevel("DemoScene");
+            Application.LoadLevel("InstructionScene");
 		}
 
-		if (GUI.Button (LeaderBoardRect, "LEADERBOARD", (GUIStyle)"Buttons")) 
+		if (GUI.Button (LeaderBoardRect, "HIGH SCORES", (GUIStyle)"Buttons")) 
 		{
-			Application.LoadLevel("leaderBoard");
+            Application.LoadLevel("HighScoreScene");
 		}
 
 		if (GUI.Button (QuitRect, "QUIT", (GUIStyle)"Buttons")) 
 		{
-			
+            Application.Quit();
 		}
 
 		GUI.EndGroup ();

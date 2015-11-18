@@ -42,7 +42,7 @@ public class gameOptions : MonoBehaviour {
 		if(GUI.Button (quitRect, "QUIT", (GUIStyle)"button"))
 		{
 			Application.LoadLevel("StartScene");
-			//Application.Quit();
+			Application.Quit();
 		}
 
 

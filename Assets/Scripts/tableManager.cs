@@ -10,7 +10,7 @@ public class ValueHolder
 }
 
 [ExecuteInEditMode]
-public class tableManager : MonoBehaviour 
+public class TableManager : MonoBehaviour 
 {
 	public Rect mainRect = new Rect();
 	public Rect TopBarRect = new Rect();
@@ -135,33 +135,34 @@ public class tableManager : MonoBehaviour
 
 
 	}
-	string[] users = {"Kunal", "Nagkumar", "Pankaj", "Aditya", "Namratha"};
-	int[] scores = {5, 5, 4, 4, 3};
+	string[] users = {"HARMIT", "VEDANG", "NIPUN", "NAVJOT", "KRUTI"};
+	int[] scores = {15, 25, 34, 43, 3};
+    string[] finalResult = { "wins", "loses", "wins", "loses", "loses"};
 	int i = 0;
 
 	public GUISkin m_mainSkin = new GUISkin();
 
 	void OnGUI()
 	{
-
-		GUI.skin = m_mainSkin;
+        GUI.skin = m_mainSkin;
 		GUI.BeginGroup (mainRect, (GUIStyle)"");
 		GUI.BeginGroup (TopBarRect, "LEADERBOARD",(GUIStyle)"leaderboardTitle");
 		/*put your buttons here*/
 		GUI.EndGroup ();
 			GUI.BeginGroup (LowerBoxRect, (GUIStyle)"");
 		GUI.Box (PositionNoRect, "Position No", (GUIStyle)"leaderboardElements");
-				for (i = 0; i < 5; i++) {
+		for (i = 0; i < 5; i++) 
+        {
 			GUI.Box (m_PositionNoList [i].valueHolders, (i + 1).ToString (), (GUIStyle)"leaderboardElements");
 			GUI.Box (m_UsernameList [i].valueHolders, users [i], (GUIStyle)"leaderboardElements");
 			GUI.Box (m_ScoreList [i].valueHolders, scores [i].ToString (), (GUIStyle)"leaderboardElements");
-			GUI.Box (m_TimeList [i].valueHolders, "2015-24-04", (GUIStyle)"leaderboardElements");
+			GUI.Box (m_TimeList [i].valueHolders, finalResult[i], (GUIStyle)"leaderboardElements");
 				
 		}
 
 		GUI.Box (UsernameRect, "Username", (GUIStyle)"leaderboardElements");
-		GUI.Box (ScoreRect, "Score", (GUIStyle)"leaderboardElements");
-		GUI.Box (TimeRect, "Time", (GUIStyle)"leaderboardElements");
+		GUI.Box (ScoreRect, "Batting Score", (GUIStyle)"leaderboardElements");
+		GUI.Box (TimeRect, "Final Result", (GUIStyle)"leaderboardElements");
 			GUI.EndGroup ();
 
 		 if( GUI.Button(OkButtonRect, "OK", (GUIStyle)"Buttons"))
@@ -172,5 +173,5 @@ public class tableManager : MonoBehaviour
 
 		GUI.EndGroup ();
 
-	}
+	}   
 }
