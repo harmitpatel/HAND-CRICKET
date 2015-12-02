@@ -190,6 +190,7 @@
      <Compile Include="Assets\Scripts\FruitTranslator.cs" />
      <Compile Include="Assets\Scripts\LevelSelector.cs" />
      <Compile Include="Assets\Scripts\PlayerNameInputTaker.cs" />
+     <Compile Include="Assets\Scripts\ScoreUpdater.cs" />
      <Compile Include="Assets\Scripts\TableManager.cs" />
      <Compile Include="Assets\Scripts\TouchDetection.cs" />
      <Compile Include="Assets\Scripts\gameOptions.cs" />

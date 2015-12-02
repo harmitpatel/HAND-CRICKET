@@ -41,6 +41,9 @@ public class HandDetector : MonoBehaviour {
     return null;
   }
 
+
+    public ScoreUpdater m_scoreUpdaterObj;
+
   void OnTriggerEnter(Collider other)
   {
     HandModel hand_model = GetHand(other);
@@ -67,11 +70,16 @@ public class HandDetector : MonoBehaviour {
 
 
             this.gameObject.SetActive(false);
-            Renderer[] renderers = part.GetComponentsInChildren<Renderer>();
-            foreach(Renderer renderer in renderers) {
-            Debug.Log ("Marked: " + renderer.gameObject.transform.parent.name + "/" + renderer.gameObject.name);
-            renderer.material.color = Color.green;
-            }
+            Renderer m_objRenderer =  this.GetComponent<Renderer>();
+            m_objRenderer.material.color = Color.blue;
+            m_scoreUpdaterObj.m_score += 5;
+
+
+            //Renderer[] renderers = part.GetComponentsInChildren<Renderer>();
+           // foreach(Renderer renderer in renderers) {
+            //Debug.Log ("Marked: " + renderer.gameObject.transform.parent.name + "/" + renderer.gameObject.name);
+            //renderer.material.color = Color.green;
+            //}
           }
         }
       //}
