@@ -1,0 +1,6 @@
+score display UI.
+on fruit tap - fruit will dissapear and score will stay for 1 second>
+left bottom corner show score UI
+get fruits to move from top to bottom randomly
+remove forearm from leap motion hand
+get new font

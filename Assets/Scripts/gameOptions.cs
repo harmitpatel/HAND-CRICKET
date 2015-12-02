@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 [ExecuteInEditMode]
 public class gameOptions : MonoBehaviour {
@@ -34,7 +34,7 @@ public class gameOptions : MonoBehaviour {
 		/*if(GUI.Button (resumeRect, "RESUME GAME", (GUIStyle)"button"))
 		{
 
-		}*/
+		}*//*
 		if(GUI.Button (optionsRect, "OPTIONS", (GUIStyle)"button"))
 		{
 			Application.LoadLevel("GameOptionsScene");
@@ -48,3 +48,5 @@ public class gameOptions : MonoBehaviour {
 
 	}
 }
+
+*/

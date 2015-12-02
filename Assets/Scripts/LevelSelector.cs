@@ -15,10 +15,14 @@ public class LevelSelector : MonoBehaviour {
     [SerializeField]
     private float m_RectangleHeight = 0.0f;
 
+    [SerializeField]
+    private GUISkin m_mainSkin = new GUISkin();
+
 	// Use this for initialization
 	void Start () 
     {
 		EasyLevelSelectorRect.x = Screen.width / 2 - EasyLevelSelectorRect.width / 2;
+        EasyLevelSelectorRect.y = Screen.height / 2 - EasyLevelSelectorRect.height / 2;
 		DifficultLevelSelectorRect.x = Screen.width / 2 - DifficultLevelSelectorRect.width / 2;
         DifficultLevelSelectorRect.y = EasyLevelSelectorRect.y + m_RectangleHeight;
 		OkRect.x = Screen.width / 2 - OkRect.width / 2;
@@ -37,19 +41,18 @@ public class LevelSelector : MonoBehaviour {
 
 	void OnGUI()
     {
-		if(GUI.Button (EasyLevelSelectorRect, "EASY - FOR BABIES..!!", (GUIStyle)"button")) 
-		{
-            Debug.Log("seelcted level is EASY");
-		}
-		
-		else if(GUI.Button (DifficultLevelSelectorRect, "DIFFICULT - NOT AS DIFFICULT AS PROFESSOR'S MID-TERM", (GUIStyle)"button"))
-		{
-            Debug.Log("seelcted level is DIFFICULT");
-		}
+        GUI.skin = m_mainSkin;
 
-		else if(GUI.Button (OkRect, "GO GO GO !!!", (GUIStyle)"button"))
+		if(GUI.Button (EasyLevelSelectorRect, "EASY ", (GUIStyle)"Buttons")) 
 		{
+            //Debug.Log("selected level is EASY");
             Application.LoadLevel("LeapMotionDetectionScene");
 		}
+
+        else if (GUI.Button(DifficultLevelSelectorRect, "DIFFICULT", (GUIStyle)"Buttons"))
+        {
+            //Debug.Log("selected level is DIFFICULT");
+            Application.LoadLevel("LeapMotionDetectionScene");
+        }
 	}
 }
