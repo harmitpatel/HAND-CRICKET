@@ -4,7 +4,8 @@ using System;
 
 
 [ExecuteInEditMode]
-public class ScoreUpdater : MonoBehaviour {
+public class ScoreUpdater : MonoBehaviour 
+{
 
     public Rect m_scoreDisplayer;
     public int m_score = 0;

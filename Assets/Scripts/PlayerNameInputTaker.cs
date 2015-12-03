@@ -62,8 +62,10 @@ public class PlayerNameInputTaker : MonoBehaviour
         m_sInputEmail = GUI.TextField(m_emailInputRect, m_sInputEmail, (GUIStyle)"ins");
         m_bToggleValue = GUI.Toggle(m_registrationInputRect, m_bToggleValue, m_sRegistrationText, (GUIStyle)"Toggle");
         if (m_sInputName == string.Empty || m_sInputEmail == string.Empty)
-        {
-            if (GUI.Button(SelectLevelRect, "Enter Details Above", (GUIStyle)"")) ;
+        {   
+            if (GUI.Button(SelectLevelRect, "Enter Details Above", (GUIStyle)""))
+            { 
+            }
         }
         else
         {

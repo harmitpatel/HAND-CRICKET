@@ -1,0 +1,51 @@
+Mono path[0] = 'C:/Projects/Unity/Hand Cricket/Builds/12-2-2015-2_Data/Managed'
+Mono path[1] = 'C:/Projects/Unity/Hand Cricket/Builds/12-2-2015-2_Data/Mono'
+Mono config path = 'C:/Projects/Unity/Hand Cricket/Builds/12-2-2015-2_Data/Mono/etc'
+PlayerConnection initialized from C:/Projects/Unity/Hand Cricket/Builds/12-2-2015-2_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55323
+Multi-casting "[IP] 192.168.57.1 [Port] 55323 [Flags] 2 [Guid] 1836962436 [EditorId] 1651860921 [Version] 1048832 [Id] WindowsPlayer(harmit) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [192.168.57.1:55323]
+Initialize engine version: 5.2.2f1 (3757309da7e7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+Platform assembly: C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.208 seconds
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Projects\Unity\Hand Cricket\Builds\12-2-2015-2_Data\Managed\System.dll (this message is harmless)
+ScriptableObject.ctor can only be called from the main thread.
+Constructors and field initializers will be executed from the loading thread when loading a scene.
+Don't use this function in the constructor or field initializers, instead move initialization code to the Awake or Start function.
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Scripting/Scripting.cpp Line: 540)
+
+ArgumentException: ScriptableObject.ctor can only be called from the main thread.
+Constructors and field initializers will be executed from the loading thread when loading a scene.
+Don't use this function in the constructor or field initializers, instead move initialization code to the Awake or Start function.
+  at (wrapper managed-to-native) UnityEngine.ScriptableObject:Internal_CreateScriptableObject (UnityEngine.ScriptableObject)
+  at UnityEngine.ScriptableObject..ctor () [0x00006] in C:\buildslave\unity\build\artifacts\generated\common\runtime\BaseClassBindings.gen.cs:530 
+  at UnityEngine.GUISkin..ctor () [0x00000] in <filename unknown>:0 
+  at StartPage..ctor () [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/BaseClassBindings.gen.cs Line: 530)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 6a68 -> priority: 1 

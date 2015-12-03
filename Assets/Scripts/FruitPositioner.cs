@@ -9,10 +9,8 @@ public class FruitPositionSetter
     public GameObject m_FruitItem;
     public Vector3 m_fruitPosition;
     public float m_speedOfFruit = 0.0f;
-    //public int m_FruitPositionNumber = 0;
-    //public bool m_isFoodSet = false;
-    //public bool m_isFoodGrabbed = false;
-    //public int m_FoodEatenCount = 0;
+    public int m_fruitHitScore = 0;
+    public int m_fruitID = 0;
 }
 
 public class FruitPositioner : MonoBehaviour
@@ -29,9 +27,6 @@ public class FruitPositioner : MonoBehaviour
     [SerializeField]
     private bool m_isAnyFoodCreated = false;
 
-    public bool m_IsGrabbedFood = false;
-
-
 
     // Use this for initialization
     void Start()
@@ -41,7 +36,7 @@ public class FruitPositioner : MonoBehaviour
         {
             m_ListOfFruitPositions[i].m_FruitItem.SetActive(false);
             m_ListOfFruitPositions[i].m_fruitPosition = m_ListOfFruitPositions[i].m_FruitItem.gameObject.transform.position;
-            //Debug.Log ("Setting all to false before start");
+            m_ListOfFruitPositions[i].m_fruitID = i;
         }
 
         m_RandomPositionNumber = UnityEngine.Random.Range(0,2);
@@ -50,21 +45,13 @@ public class FruitPositioner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown (KeyCode.G)) 
+       if (!m_isAnyFoodCreated)
         {
-            if (!m_isAnyFoodCreated)
-            {
-                m_RandomPositionNumber = UnityEngine.Random.Range(0, (m_ListOfFruitPositions.Count));
-                m_ListOfFruitPositions[m_RandomPositionNumber].m_fruitPosition = m_ListOfFruitPositions[m_RandomPositionNumber].m_FruitItem.gameObject.transform.position;
-                Debug.Log("random number generated is --- " + m_RandomPositionNumber);
-                m_ListOfFruitPositions[m_RandomPositionNumber].m_FruitItem.SetActive(true);
-                
-                //m_ListOfFruitPositions[m_RandomPositionNumber].m_FoodEatenCount++;
-                //m_ListOfFruitPositions[m_RandomPositionNumber].m_isFoodSet = true;
-                m_currentTime = Time.time;
-                //Debug.Log("time at which made visible --- " + m_currentTime);
-                //Debug.Log("visible GO -- " + m_ListOfFoodPositions[m_RandomPositionNumber].m_FoodItem.name);
-            }
+            m_RandomPositionNumber = UnityEngine.Random.Range(0, (m_ListOfFruitPositions.Count));
+            m_ListOfFruitPositions[m_RandomPositionNumber].m_fruitPosition = m_ListOfFruitPositions[m_RandomPositionNumber].m_FruitItem.gameObject.transform.position;
+            Debug.Log("random number generated is --- " + m_RandomPositionNumber);
+            m_ListOfFruitPositions[m_RandomPositionNumber].m_FruitItem.SetActive(true);
+            m_currentTime = Time.time;
         }
 
         for (int i = 0; i < m_ListOfFruitPositions.Count; i++)
@@ -73,17 +60,17 @@ public class FruitPositioner : MonoBehaviour
             {
                 m_ListOfFruitPositions[i].m_fruitPosition.y -= m_ListOfFruitPositions[i].m_speedOfFruit + Time.deltaTime;
                 m_ListOfFruitPositions[i].m_FruitItem.gameObject.transform.position = m_ListOfFruitPositions[i].m_fruitPosition;
-                //m_ListOfFruitPositions[i].m_FruitItem.gameObject.transform.position = m_ListOfFruitPositions[i].m_fruitPosition;
                 m_isAnyFoodCreated = true;
             }
+
             else
             {
                 m_ListOfFruitPositions[i].m_fruitPosition.y = 4.0f;
                 m_ListOfFruitPositions[i].m_FruitItem.gameObject.transform.position = m_ListOfFruitPositions[i].m_fruitPosition;
-               // m_ListOfFruitPositions[i].m_FruitItem.gameObject.transform.position = m_ListOfFruitPositions[i].m_fruitPosition;
             }
 
-           
+
+            
         }
 
         if (m_isAnyFoodCreated)
@@ -91,13 +78,18 @@ public class FruitPositioner : MonoBehaviour
             if ((Time.time - m_currentTime) >= 1.0f)
             {
                 m_ListOfFruitPositions[m_RandomPositionNumber].m_FruitItem.SetActive(false);
-                
-                //m_ListOfFruitPositions[m_RandomPositionNumber].m_isFoodSet = false;
-                //Debug.Log("Setting false -- " + m_ListOfFoodPositions[m_RandomPositionNumber].m_FoodItem.name);
                 m_isAnyFoodCreated = false;
             }
         }
 
 
+       
     }
+
+    public void UpdateScore()
+    {
+        
+        
+    }
+
 }

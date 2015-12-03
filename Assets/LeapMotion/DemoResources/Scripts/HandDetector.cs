@@ -34,7 +34,8 @@ public class HandDetector : MonoBehaviour {
     }
     for (int c = 0; c < parent.childCount; c++) {
       Transform part = FindPart(parent.GetChild(c), name);
-      if (part != null) {
+      if (part != null) 
+      {
         return part;
       }
     }
@@ -43,6 +44,7 @@ public class HandDetector : MonoBehaviour {
 
 
     public ScoreUpdater m_scoreUpdaterObj;
+    public FruitPositioner m_fruitPositionerObj;
 
   void OnTriggerEnter(Collider other)
   {
@@ -51,9 +53,9 @@ public class HandDetector : MonoBehaviour {
     {
       int handID = hand_model.GetLeapHand().Id;
       HandModel[] hand_models = leap_controller_.GetAllGraphicsHands();
-      //for (int i = 0; i < hand_models.Length; ++i)
-      //{
-        if (hand_models[0].GetLeapHand().Id == handID)
+      for (int i = 0; i < hand_models.Length; ++i)
+      { 
+        if (hand_models[i].GetLeapHand().Id == handID)
         {
           Transform part = null;
           /*if (other.transform.parent.GetComponent<HandModel>() != null) {
@@ -61,28 +63,29 @@ public class HandDetector : MonoBehaviour {
             part = FindPart(hand_models[0].transform, other.name);
           } */if (other.transform.parent.GetComponent<FingerModel>() != null) {
             // Bone in a finger
-            part = FindPart(FindPart(hand_models[0].transform, other.transform.parent.name), other.name);
+            part = FindPart(FindPart(hand_models[i].transform, other.transform.parent.name), other.name);
           }
-          //Debug.Log ("Detected: " + other.transform.parent.name + "/" + other.gameObject.name);
-          if (part != null)
-          {
+          Debug.Log ("Detected: " + other.transform.parent.name + "/" + other.gameObject.name);
+         // if (part != null)
+          //{
+              //Renderer m_objRenderer = this.GetComponent<Renderer>();
+              //m_objRenderer.material.color = Color.blue;
+          //m_fruitPositionerObj.UpdateScore();
+          bool ishit = true;
+          if (ishit) { m_scoreUpdaterObj.m_score += 5;
+          ishit = false;
+          }
               
-
-
-            this.gameObject.SetActive(false);
-            Renderer m_objRenderer =  this.GetComponent<Renderer>();
-            m_objRenderer.material.color = Color.blue;
-            m_scoreUpdaterObj.m_score += 5;
-
-
+              //this.gameObject.SetActive(false);
+           
             //Renderer[] renderers = part.GetComponentsInChildren<Renderer>();
            // foreach(Renderer renderer in renderers) {
             //Debug.Log ("Marked: " + renderer.gameObject.transform.parent.name + "/" + renderer.gameObject.name);
             //renderer.material.color = Color.green;
             //}
-          }
+          //}
         }
-      //}
+      }
     }
   }
 }
