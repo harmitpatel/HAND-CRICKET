@@ -14,7 +14,8 @@ using Leap;
  * The hand can have game objects for the palm, wrist and forearm, as well as fingers.
  */
 public class SkeletalHand : HandModel {
-  protected const float PALM_CENTER_OFFSET = 0.015f;
+
+  protected const float PALM_CENTER_OFFSET = 0.0150f;
 
   void Start() {
     // Ignore collisions with self.
@@ -33,7 +34,7 @@ public class SkeletalHand : HandModel {
   }
 
   protected Vector3 GetPalmCenter() {
-    Vector3 offset = PALM_CENTER_OFFSET * Vector3.Scale(GetPalmDirection(), transform.lossyScale);
+    Vector3 offset = PALM_CENTER_OFFSET * Vector3.Scale(GetPalmDirection(), transform.localScale);
     return GetPalmPosition() - offset;
   }
 

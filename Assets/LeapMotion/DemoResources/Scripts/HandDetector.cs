@@ -2,9 +2,36 @@
 using System.Collections;
 using Leap;
 
-public class HandDetector : MonoBehaviour {
+public class HandDetector : MonoBehaviour 
+{
 
   public HandController leap_controller_;
+
+  [SerializeField]
+  private ScoreUpdater m_scoreUpdaterObj;
+  [SerializeField]
+  private FruitFactory m_fruitPositionerObj;
+  [SerializeField]
+  private DynamiteAdapter m_dynamiteAdapterObj;
+  [SerializeField]
+  private Kiwi m_kiwiObj;
+  [SerializeField]
+  private Banana m_banaobj;
+  [SerializeField]
+  private Pumpkin m_pumpkin;
+  
+
+
+  void Start()
+  {
+
+     m_dynamiteAdapterObj = m_dynamiteAdapterObj.GetComponent<DynamiteAdapter>();
+     m_kiwiObj = m_kiwiObj.GetComponent<Kiwi>();
+     m_banaobj = m_kiwiObj.GetComponent<Banana>();
+     m_pumpkin = m_kiwiObj.GetComponent<Pumpkin>();
+
+ 
+  }
 
   HandModel GetHand(Collider other)
   {
@@ -34,18 +61,14 @@ public class HandDetector : MonoBehaviour {
     }
     for (int c = 0; c < parent.childCount; c++) {
       Transform part = FindPart(parent.GetChild(c), name);
-      if (part != null) 
-      {
+      if (part != null) {
         return part;
       }
     }
     return null;
   }
 
-
-    public ScoreUpdater m_scoreUpdaterObj;
-    public FruitPositioner m_fruitPositionerObj;
-
+    
   void OnTriggerEnter(Collider other)
   {
     HandModel hand_model = GetHand(other);
@@ -54,36 +77,52 @@ public class HandDetector : MonoBehaviour {
       int handID = hand_model.GetLeapHand().Id;
       HandModel[] hand_models = leap_controller_.GetAllGraphicsHands();
       for (int i = 0; i < hand_models.Length; ++i)
-      { 
+      {
         if (hand_models[i].GetLeapHand().Id == handID)
         {
           Transform part = null;
-          /*if (other.transform.parent.GetComponent<HandModel>() != null) {
+          if (other.transform.parent.GetComponent<HandModel>() != null) {
             // Palm or Forearm components
-            part = FindPart(hand_models[0].transform, other.name);
-          } */if (other.transform.parent.GetComponent<FingerModel>() != null) {
+            part = FindPart(hand_models[i].transform, other.name);
+          } else if (other.transform.parent.GetComponent<FingerModel>() != null) {
             // Bone in a finger
             part = FindPart(FindPart(hand_models[i].transform, other.transform.parent.name), other.name);
           }
-          Debug.Log ("Detected: " + other.transform.parent.name + "/" + other.gameObject.name);
-         // if (part != null)
-          //{
-              //Renderer m_objRenderer = this.GetComponent<Renderer>();
-              //m_objRenderer.material.color = Color.blue;
-          //m_fruitPositionerObj.UpdateScore();
-          bool ishit = true;
-          if (ishit) { m_scoreUpdaterObj.m_score += 5;
-          ishit = false;
-          }
-              
-              //this.gameObject.SetActive(false);
-           
+          //Debug.Log ("Detected: " + other.transform.parent.name + "/" + other.gameObject.name);
+          //if (part != null) 
+         // {
+
+
+              //m_scoreUpdaterObj.m_score += 5;
             //Renderer[] renderers = part.GetComponentsInChildren<Renderer>();
-           // foreach(Renderer renderer in renderers) {
-            //Debug.Log ("Marked: " + renderer.gameObject.transform.parent.name + "/" + renderer.gameObject.name);
-            //renderer.material.color = Color.green;
-            //}
-          //}
+            //foreach(Renderer renderer in renderers) {
+              //Debug.Log ("qwertyuiop[");
+            //renderer.material.color = Color.red;
+
+              if (this.gameObject.tag == "dynamite")
+              {
+                  m_dynamiteAdapterObj.DeactivatedFruit();
+              }
+
+              else if (this.gameObject.tag  == "kiwi")
+              {
+                  m_kiwiObj.UpdateScore(m_scoreUpdaterObj);
+              }
+
+              else if (this.gameObject.tag == "banana")
+              {
+                  m_kiwiObj.UpdateScore(m_scoreUpdaterObj);
+              }
+
+              else if (this.gameObject.tag == "pumpkin")
+              {
+                  m_kiwiObj.UpdateScore(m_scoreUpdaterObj);
+              }
+              
+
+
+            // }
+         // }
         }
       }
     }
